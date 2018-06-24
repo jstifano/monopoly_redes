@@ -10,13 +10,13 @@
   [HyperTerminal Windows](URL "https://www.hilgraeve.com/hyperterminal-trial/")
   
 3. Clonar el proyecto del repositorio e instalar las librerías como se explica a continuación:
-  * Les dejare en Google una carpeta donde se encuentran 3 archivos para hacer funcionar la librería RXTX serial de manera correcta,
+  * Les dejare en Google Drive una carpeta donde se encuentran 3 archivos para hacer funcionar la librería RXTX serial de manera correcta,
   dichos archivos son rxtxParallel.dll, rxtxSerial.dll y RXTXcomm.jar.
   
-  * Los 2 archivos .dll (rxtxParallel y rxtxSerial) iran colocados en la ruta *C:\Program Files\Java\jre1.8.0_111\bin* 
-  * El archivo faltante (RXTXcomm.jar) ira colocado en la ruta *C:\Program Files\Java\jre1.8.0_111\lib\ext*
+  * Los 2 archivos .dll (rxtxParallel y rxtxSerial) iran colocados en la ruta **C:\Program Files\Java\jre1.8.0_111\bin** 
+  * El archivo faltante (RXTXcomm.jar) ira colocado en la ruta **C:\Program Files\Java\jre1.8.0_111\lib\ext**
   
-4. Por último hacer *git pull origin master* en la consola para bajarse los cambios actualizados del repo.
+4. Por último hacer `git pull origin master` en la consola para bajarse los cambios actualizados del repo.
 
 ### Nota importante:
 

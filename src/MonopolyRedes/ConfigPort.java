@@ -65,14 +65,14 @@ public class ConfigPort {
     * @throws java.io.IOException                           *
     *********************************************************/
     
-    public int getBufferData() throws IOException{
+    public String getBufferData() throws IOException{
          // Leo cada uno de los bytes en el buffer de datos
-        while(!this.myScanner.hasNextInt()){
+        while(!this.myScanner.hasNext()){
             this.myScanner.close(); // Debo cerrarlo ya que hay un bug con el Scanner
             this.myScanner = null;
             this.myScanner = new Scanner(this.port.getInputStream());
         }
-        int trama = this.myScanner.nextInt();
+        String trama = this.myScanner.next();
         System.out.println("Trama :::" + trama);
         return trama;
     }

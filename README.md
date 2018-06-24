@@ -20,7 +20,7 @@
 
 ### Nota importante:
 
-* Todos los cambios que vayan a realizar haganlo en una rama aparte, *NO EN MASTER!* para evitar conflictos a futuro.
+* Todos los cambios que vayan a realizar haganlo en una rama aparte, **NO EN MASTER!** para evitar conflictos a futuro.
   El comando que van a colocar para crear un nuevo branch es: `git branch NOMBRE_DE_LA_RAMA` y luego `git checkout NOMBRE_DE_LA_RAMA`
 * Suban todos sus cambios en sus ramas respectivas y yo me encargo de hacer el merge de ellas.
 

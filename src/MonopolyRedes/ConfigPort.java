@@ -54,7 +54,7 @@ public class ConfigPort {
             // 3) STOPBITS: Número de bits de parada
             // 4) PARITY: Paridad en la trama, en este caso es NONE porque no hay
 
-        this.mySerialPort.setSerialPortParams(19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+        this.mySerialPort.setSerialPortParams(2400, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
         this.myScanner = new Scanner (this.mySerialPort.getInputStream());
         this.myPrintStream = new PrintStream (this.mySerialPort.getOutputStream());      
     }

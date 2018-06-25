@@ -26,6 +26,7 @@ public class MonopolyRedes {
             ports.identifyPorts(); // Imprime todos los puertos disponibles en la PC.
             String bufferData = ports.getBufferData();
             System.out.println("La data recibida es ::: " + bufferData);
+            ports.sendData("Hola Giselle");
         //}catch (PortInUseException e){
             //System.out.println("exception " + e);
         //}

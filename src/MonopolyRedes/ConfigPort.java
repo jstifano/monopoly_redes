@@ -37,7 +37,6 @@ public class ConfigPort {
     ******************************************************/
     
     public void identifyPorts() throws UnsupportedCommOperationException, PortInUseException, IOException{
-        
         while(this.commports.hasMoreElements()){
             this.port_identifier = (CommPortIdentifier) this.commports.nextElement();
             

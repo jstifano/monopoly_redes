@@ -11,15 +11,33 @@ public class Card {
     private String serial;
     private String description;
     private String color;
+    private int price; // Precio de la propiedad;
+    private int mortgage; // Valor de hipoteca
+    private int rent; // Precio de alquiler sin tener casas
+    private int price_house_1;
+    private int price_house_2;
+    private int price_house_3;
+    private int price_house_4;
+    private int price_hotel;
+    private int house_hotel;
     
     // Constructor vacio
     public Card(){}
     
     //  Constructor con parámetros
-    public Card( String serial, String description, String color ){
+    public Card( String serial, String description, String color, int price, int mortgage, int rent, int h1, int h2, int h3, int h4, int hotel, int house_hotel){
         this.serial = serial;
         this.description = description;
         this.color = color;
+        this.price = price;
+        this.mortgage = mortgage;
+        this.rent = rent;
+        this.price_house_1 = h1;
+        this.price_house_2 = h2;
+        this.price_house_3 = h3;
+        this.price_house_4 = h4;
+        this.price_hotel = hotel;
+        this.house_hotel = house_hotel;
     }
     
     public String getSerial(){
@@ -45,4 +63,42 @@ public class Card {
     public void setColor(String color){
         this.color = color;
     }
+    
+    public int getPrice(){
+        return this.price;
+    }
+    
+    public int getMortgage(){
+        return this.mortgage;
+    }
+    
+    public int getPriceRent(){
+        return this.rent;
+    }
+    
+    public int getPriceHouse(int number_houses){
+        switch (number_houses) {
+            case 1:
+                return this.price_house_1;
+            case 2:
+                return this.price_house_2;
+            case 3:
+                return this.price_house_3;
+            case 4:
+                return this.price_house_4;
+            default:
+                break;
+        }
+        return this.price_house_1;
+    }
+    
+    public int getPriceHotel(){
+        return this.price_hotel;
+    }
+    
+    // Metodo que devuelve el valor para comprar una casa u hotel
+    public int getPrinceHH(){
+        return this.house_hotel;
+    }
+    
 }

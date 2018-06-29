@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*********************************************************/
+/* @author :: Javier Stifano <jstifano18@gmail.com       */
+/* description :: Clase para manejar la lógica del juego */
+/*********************************************************/
 package MonopolyRedes;
 
-/**
- *
- * @author jstif
- */
 public class GameLogic {
     
 }

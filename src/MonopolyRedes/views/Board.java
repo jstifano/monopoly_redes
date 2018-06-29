@@ -14,6 +14,8 @@ import MonopolyRedes.utils.ActionDice;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
+import javax.swing.ImageIcon;
+
 
 public class Board extends javax.swing.JFrame {
     
@@ -46,10 +48,11 @@ public class Board extends javax.swing.JFrame {
         monopolyPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jDice1 = new javax.swing.JLabel();
+        jDice2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Juego de Monopolio");
-        setMaximumSize(new java.awt.Dimension(500, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         record.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MonopolyRedes/images/record_1.png"))); // NOI18N
@@ -91,11 +94,16 @@ public class Board extends javax.swing.JFrame {
         monopolyPanel.setLayout(monopolyPanelLayout);
         monopolyPanelLayout.setHorizontalGroup(
             monopolyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monopolyPanelLayout.createSequentialGroup()
+            .addGroup(monopolyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(monopolyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
+                .addGroup(monopolyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addGroup(monopolyPanelLayout.createSequentialGroup()
+                        .addGroup(monopolyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDice1)
+                            .addComponent(jDice2))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         monopolyPanelLayout.setVerticalGroup(
@@ -105,7 +113,11 @@ public class Board extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(631, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jDice1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDice2)
+                .addContainerGap(611, Short.MAX_VALUE))
         );
 
         getContentPane().add(monopolyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, -1, 800));
@@ -123,7 +135,7 @@ public class Board extends javax.swing.JFrame {
         Variables.current_dices = ActionDice.throwDices(2, 6); // Valor de dado 1 y dado 2 en arreglo
         dice_1 = Variables.current_dices.get(0).toString(); // Guardo el valor del dado 1
         dice_2 = current_dices.get(1).toString(); // Guardo el valor del dado 2
-        
+        setDiceIcon();
         for (int i = 0; i < Variables.game_dices.size(); i++) {
             // Si el numero de dados es igual a la combinacion del arreglo
             if(Variables.game_dices.get(i).getDiceNumber().equals(dice_1+dice_2)){ 
@@ -153,9 +165,67 @@ public class Board extends javax.swing.JFrame {
         record.setBounds(Variables.coordinates.get(Variables.current_position).getCoordinateX(),Variables.coordinates.get(Variables.current_position).getCoordinateY(),80,60);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void setDiceIcon(){
+        ImageIcon icon_dice = null, icon_dice2 = null;
+        jDice1.setIcon(null);
+        jDice2.setIcon(null); 
+        int dice_1 = Variables.current_dices.get(0);
+        int dice_2 = Variables.current_dices.get(1);
+        switch (dice_1) {
+            case 1:
+                icon_dice = new ImageIcon(Variables.dices_images[0]);
+                break;
+            case 2:
+                icon_dice = new ImageIcon(Variables.dices_images[1]);
+                break;
+            case 3:
+                icon_dice = new ImageIcon(Variables.dices_images[2]);
+                break;
+            case 4:
+                icon_dice = new ImageIcon(Variables.dices_images[3]);
+                break;
+            case 5:
+                icon_dice = new ImageIcon(Variables.dices_images[4]);
+                break;
+            case 6:
+                icon_dice = new ImageIcon(Variables.dices_images[5]);
+                break;
+            default:
+                break;
+        }
+
+        switch (dice_2) {
+            case 1:
+                icon_dice2 = new ImageIcon(Variables.dices_images[0]);
+                break;
+            case 2:
+                icon_dice2 = new ImageIcon(Variables.dices_images[1]);
+                break;
+            case 3:
+                icon_dice2 = new ImageIcon(Variables.dices_images[2]);
+                break;
+            case 4:
+                icon_dice2 = new ImageIcon(Variables.dices_images[3]);
+                break;
+            case 5:
+                icon_dice2 = new ImageIcon(Variables.dices_images[4]);
+                break;
+            case 6:
+                icon_dice2 = new ImageIcon(Variables.dices_images[5]);
+                break;
+            default:
+                break;
+        }
+        System.out.println("dice1: " + dice_1+ ", dice_2" + dice_2);
+        jDice1.setIcon(icon_dice);
+        jDice2.setIcon(icon_dice2); 
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
+    private javax.swing.JLabel jDice1;
+    private javax.swing.JLabel jDice2;
     private javax.swing.JPanel monopolyPanel;
     public javax.swing.JLabel monopoly_board;
     public javax.swing.JLabel record;

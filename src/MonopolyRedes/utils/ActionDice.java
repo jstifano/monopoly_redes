@@ -31,10 +31,11 @@ public final class ActionDice {
      ************************************************************************/
     
     public static ArrayList throwDices(int number, int range) {
-        ArrayList results = new ArrayList();
+        ArrayList results = new ArrayList(number);
         for (int i=0; i<number; i++) {
             results.add(randomDices(range));
         }
+        System.out.println("results: " + results.get(0) + ", " + results.get(1));
         return results;
     }
 }

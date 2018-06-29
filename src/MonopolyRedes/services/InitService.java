@@ -7,6 +7,7 @@ import MonopolyRedes.cards.Dice;
 import MonopolyRedes.cards.GameInstruction;
 import MonopolyRedes.cards.PlayerInstruction;
 import MonopolyRedes.cards.Station;
+import MonopolyRedes.positions.Position;
 
 public class InitService {
     
@@ -152,6 +153,49 @@ public class InitService {
         var.game_dices.add(new Dice("10110011", "63"));
         var.game_dices.add(new Dice("10110100", "64"));
         var.game_dices.add(new Dice("10110101", "65"));
+    }
+    
+    public void initPositions(Variables var){
+        var.coordinates.add(new Position(1,745,742));
+        var.coordinates.add(new Position(2,640,720));
+        var.coordinates.add(new Position(3,570,730));
+        var.coordinates.add(new Position(4,510,722));
+        var.coordinates.add(new Position(5,440,722));
+        var.coordinates.add(new Position(6,370,722));
+        var.coordinates.add(new Position(7,310,722));
+        var.coordinates.add(new Position(8,245,722));
+        var.coordinates.add(new Position(9,180,722));
+        var.coordinates.add(new Position(10,115,722));
+        var.coordinates.add(new Position(11,25,722));
+        var.coordinates.add(new Position(12,25,630));
+        var.coordinates.add(new Position(13,25,565));
+        var.coordinates.add(new Position(14,25,500));
+        var.coordinates.add(new Position(15,25,430));
+        var.coordinates.add(new Position(16,25,365));
+        var.coordinates.add(new Position(17,25,300));
+        var.coordinates.add(new Position(18,25,240));
+        var.coordinates.add(new Position(19,25,175));
+        var.coordinates.add(new Position(20,25,100));
+        var.coordinates.add(new Position(21,25,15));
+        var.coordinates.add(new Position(22,115,15));
+        var.coordinates.add(new Position(23,175,15));
+        var.coordinates.add(new Position(24,250,15));
+        var.coordinates.add(new Position(25,310,15));
+        var.coordinates.add(new Position(26,380,15));
+        var.coordinates.add(new Position(27,440,15));
+        var.coordinates.add(new Position(28,505,15));
+        var.coordinates.add(new Position(29,570,15));
+        var.coordinates.add(new Position(30,640,15));
+        var.coordinates.add(new Position(31,720,15));
+        var.coordinates.add(new Position(32,720,110));
+        var.coordinates.add(new Position(33,740,170));
+        var.coordinates.add(new Position(34,720,240));
+        var.coordinates.add(new Position(35,735,300));
+        var.coordinates.add(new Position(36,720,370));
+        var.coordinates.add(new Position(37,720,430));
+        var.coordinates.add(new Position(38,735,500));
+        var.coordinates.add(new Position(39,720,565));
+        var.coordinates.add(new Position(40,735,630));
     }
     
 }

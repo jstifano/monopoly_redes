@@ -13,7 +13,6 @@ import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import java.io.IOException;
 
-
 public class MonopolyRedes {
     
     public static void main(String[] args) throws UnsupportedCommOperationException, IOException, PortInUseException {

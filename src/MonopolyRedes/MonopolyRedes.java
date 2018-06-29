@@ -17,15 +17,18 @@ import java.awt.Point;
 public class MonopolyRedes {
     
     public static void main(String[] args) throws UnsupportedCommOperationException, IOException, PortInUseException {
-     
-        //try {
-            Variables var = new Variables(); // Variables a utilizar durante el juego
+    
             Board board = new Board();
-            int x = 70;
-            int y = 700;
+            
             InitService init = new InitService();
-            init.initCards(var);
-            init.initPositions(var);
+            init.initCards();
+            init.initCasualities();
+            init.initComunalArks();
+            init.initStations();
+            init.initInstructions();
+            init.initPositions();
+            init.initPlayerInstructions();
+            init.initDices();
             /*ConfigPort ports = new ConfigPort();
             ports.identifyPorts(); // Imprime todos los puertos disponibles en la PC.
             String bufferData = ports.getBufferData();
@@ -33,11 +36,7 @@ public class MonopolyRedes {
             
             board.setVisible(true);
             board.setLocationRelativeTo(null); // Coloca la pantalla en el centro
-             
-        //}catch (PortInUseException e){
-            //System.out.println("exception " + e);
-        //}
-            
+                     
     }
     
 }

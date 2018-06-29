@@ -8,6 +8,7 @@ package MonopolyRedes.cards;
 public class Card {
     
     // Atributos de la clase
+    private int position;
     private String serial;
     private String description;
     private String color;
@@ -25,7 +26,8 @@ public class Card {
     public Card(){}
     
     //  Constructor con parámetros
-    public Card( String serial, String description, String color, int price, int mortgage, int rent, int h1, int h2, int h3, int h4, int hotel, int house_hotel){
+    public Card( int position, String serial, String description, String color, int price, int mortgage, int rent, int h1, int h2, int h3, int h4, int hotel, int house_hotel){
+        this.position = position;
         this.serial = serial;
         this.description = description;
         this.color = color;
@@ -99,6 +101,10 @@ public class Card {
     // Metodo que devuelve el valor para comprar una casa u hotel
     public int getPrinceHH(){
         return this.house_hotel;
+    }
+    
+    public int getPosition(){
+        return this.getPosition();
     }
     
 }

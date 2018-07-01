@@ -35,7 +35,6 @@ public final class ActionDice {
         for (int i=0; i<number; i++) {
             results.add(randomDices(range));
         }
-        System.out.println("results: " + results.get(0) + ", " + results.get(1));
         return results;
     }
 }

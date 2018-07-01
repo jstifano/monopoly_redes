@@ -7,20 +7,20 @@
 package MonopolyRedes;
 //import MonopolyRedes.ConfigPort;
 import MonopolyRedes.services.InitService;
-import MonopolyRedes.Variables;
 import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import java.io.IOException;
 import MonopolyRedes.views.Board;
-import java.awt.Point;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MonopolyRedes {
     
     public static void main(String[] args) throws UnsupportedCommOperationException, IOException, PortInUseException {
-    
-            Board board = new Board();
+            Board board = new Board(); // Tablero de juego
+            InitService init = new InitService(); // Instancia para iniciar servicios
             
-            InitService init = new InitService();
+            // Inicialización de todos los servicios
             init.initCards();
             init.initCasualities();
             init.initComunalArks();
@@ -29,11 +29,9 @@ public class MonopolyRedes {
             init.initPositions();
             init.initPlayerInstructions();
             init.initDices();
-            /*ConfigPort ports = new ConfigPort();
-            ports.identifyPorts(); // Imprime todos los puertos disponibles en la PC.
-            String bufferData = ports.getBufferData();
-            ports.sendData("01001010111001010001010");*/
-            
+            // ************************************** //
+                
+            // Abre el board del juego
             board.setVisible(true);
             board.setLocationRelativeTo(null); // Coloca la pantalla en el centro
                      

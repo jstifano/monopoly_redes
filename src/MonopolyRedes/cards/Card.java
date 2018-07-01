@@ -104,7 +104,7 @@ public class Card {
     }
     
     public int getPosition(){
-        return this.getPosition();
+        return this.position;
     }
     
 }

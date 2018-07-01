@@ -20,7 +20,13 @@ public final class Variables {
     
     public static String info_to_send = ""; // Trama completa para enviar
     
-    public static int money = 2000; // Dinero para comenzar el juego
+    public static String info_received = ""; // Trama recibida por el otro equipo
+    
+    public static int who_start = 0; // 0 si comienzo yo, 1 si comienza el otro
+    
+    public static boolean get_free_jail = false;
+    
+    public static boolean buying_property = false;
     
     // Arreglo donde se encuentran las rutas de las imagenes de los dados
     public static String [] dices_images = {
@@ -38,7 +44,7 @@ public final class Variables {
     public static int [] game_board = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
     
     // Posicion actual del jugador (NOSOTROS)
-    public static int current_position = 1;
+    public static int current_position = 0;
     
     // Arreglo para las propiedades del juego
     public static ArrayList<Card> game_cards = new ArrayList<>();

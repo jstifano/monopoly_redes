@@ -9,6 +9,7 @@ import MonopolyRedes.cards.ComunalArk;
 import MonopolyRedes.cards.Dice;
 import MonopolyRedes.cards.GameInstruction;
 import MonopolyRedes.cards.PlayerInstruction;
+import MonopolyRedes.cards.Property;
 import MonopolyRedes.cards.Station;
 import MonopolyRedes.positions.Position;
 import java.util.ArrayList;
@@ -22,11 +23,9 @@ public final class Variables {
     
     public static String info_received = ""; // Trama recibida por el otro equipo
     
-    public static int who_start = 0; // 0 si comienzo yo, 1 si comienza el otro
-    
     public static boolean get_free_jail = false;
     
-    public static boolean buying_property = false;
+    public static ArrayList<Property> all_properties = new ArrayList<>();
     
     // Arreglo donde se encuentran las rutas de las imagenes de los dados
     public static String [] dices_images = {
@@ -40,19 +39,13 @@ public final class Variables {
     
     public static ArrayList<Integer> current_dices = new ArrayList<>();
     
-    // Arreglo para definir la posiciones del tablero en general (40 EN TOTAL)
-    public static int [] game_board = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
-    
-    // Posicion actual del jugador (NOSOTROS)
-    public static int current_position = 0;
-    
     // Arreglo para las propiedades del juego
     public static ArrayList<Card> game_cards = new ArrayList<>();
     
     // Arreglo para las casualidades del juego
     public static ArrayList<Casuality> game_casualities = new ArrayList<>();
     
-    // Arreglo para las casualidades del juego
+    // Arreglo para las arcas comunales del juego
     public static ArrayList<ComunalArk> game_comunal_arks = new ArrayList<>();
     
     // Arreglo para la estaciones del juego (PC1, PC2, PC3, PC4)
@@ -99,6 +92,64 @@ public final class Variables {
     
     public static ArrayList<Position> getPositions(){
         return coordinates;
+    }
+    
+    public static ArrayList<Property> getAllProperties(){
+        return all_properties;
+    }
+    
+    public static String findStationBySerial(String num_serial){
+        String result = null;
+        for (int i = 0; i < Variables.game_stations.size(); i++) {
+            if(num_serial.equals(Variables.game_stations.get(i).getSerial())){
+                result = Variables.game_stations.get(i).getName();
+            }
+        }
+        return result;
+    }
+    
+    public static String findDiceBySerial(String num_serial){
+        String result = null;
+        for (int i = 0; i < Variables.game_dices.size(); i++) {
+            if(num_serial.equals(Variables.game_dices.get(i).getSerial())){
+                result = Variables.game_dices.get(i).getDiceNumber();
+            }
+        }
+        return result;
+    }
+    
+    public static Property findProperty(String name){
+        Property result = null;
+        for (int i = 0; i < Variables.all_properties.size(); i++) {
+            if( name.equals(Variables.all_properties.get(i).getPropertyName()) ){
+                result = Variables.all_properties.get(i);
+            }
+        }
+        return result;
+    }
+    
+    public static String findPropertyBySerial(String serial){
+        String result = null;
+        for (int i = 0; i < Variables.all_properties.size(); i++) {
+            if( serial.equals(Variables.all_properties.get(i).getSerial()) ){
+                result = Variables.all_properties.get(i).getSerial();
+            }
+        }
+        return result;
+    }
+    
+    public static String findPropertyName(String serial){
+        String result = null;
+        for (int i = 0; i < Variables.all_properties.size(); i++) {
+            if( serial.equals(Variables.all_properties.get(i).getSerial()) ){
+                result = Variables.all_properties.get(i).getPropertyName();
+            }
+        }
+        return result;
+    }
+    
+    public static void addProperty(Property property){
+        Variables.all_properties.add(property);
     }
     // ****** METODOS PUBLICOS PARA OBTENER LOS ARRAYS DEL JUEGO ********* //  
 }

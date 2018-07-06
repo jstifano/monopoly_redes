@@ -48,8 +48,8 @@ public class Player {
         return this.money;
     }
     
-    public void goToJail(boolean value){
-        this.prisoner = value;
+    public void goToJail(){
+        this.prisoner = true;
     }
     
     public boolean isPrisoner(){

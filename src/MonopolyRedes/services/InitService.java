@@ -105,7 +105,7 @@ public class InitService {
         Variables.game_instructions.add(new GameInstruction("0100", "Propiedades"));
         Variables.game_instructions.add(new GameInstruction("0101", "Tomar Tarjeta"));
         Variables.game_instructions.add(new GameInstruction("0110", "Retirarse del Juego"));
-        Variables.game_instructions.add(new GameInstruction("0111", "Victoria"));
+        Variables.game_instructions.add(new GameInstruction("0111", "Finalizar turno"));
     }
     
     // Metodo para inicializar las acciones del jugador
@@ -113,6 +113,9 @@ public class InitService {
         Variables.game_player_instructions.add(new PlayerInstruction("100", "Comprar Propiedad"));
         Variables.game_player_instructions.add(new PlayerInstruction("101", "Vender Propiedad"));
         Variables.game_player_instructions.add(new PlayerInstruction("110", "Hipotecar"));
+        Variables.game_player_instructions.add(new PlayerInstruction("111", "Pagar Impuesto"));
+        Variables.game_player_instructions.add(new PlayerInstruction("010", "Pagar Propiedad"));
+        Variables.game_player_instructions.add(new PlayerInstruction("000", "Owner Propiedad"));
     }
     
     // Metodo para inicializar las todas las combinaciones de lanz. de dados

@@ -376,7 +376,6 @@ public class ConfigPort implements Runnable{
                             property.setSerial(data.substring(19, 24));
 
                             Variables.addProperty(property);
-                            System.out.println("Propiedades ::: " + Variables.all_properties);
                             
                             Variables.info_to_send = Variables.stop_bit + 
                             data.substring(8, 10) +
@@ -416,11 +415,6 @@ public class ConfigPort implements Runnable{
                     
                     for (int i = 0; i < Variables.game_cards.size(); i++) {
                         if( data.substring(19,24).equals(Variables.game_cards.get(i).getSerial()) ){
-                            System.out.println("ENTROOO EN EL QUE PAGA");
-                            Board.history_plays.setText("");
-                            Board.history_plays.append("Cobraste " + Variables.game_cards.get(i).getPriceRent() + "$ de alquiler");
-                            this.plusMoney(Variables.game_cards.get(i).getPriceRent());
-                            Board.money_label.setText(String.valueOf(this.getMoney() + " $"));
 
                             Variables.info_to_send = Variables.stop_bit +
                                 data.substring(8, 10) + 
@@ -433,6 +427,11 @@ public class ConfigPort implements Runnable{
                             this.sendData(Variables.info_to_send);
                             Variables.info_to_send = "";
                             Variables.info_received = "";
+                            
+                            Board.history_plays.setText("");
+                            Board.history_plays.append("Cobraste " + Variables.game_cards.get(i).getPriceRent() + "$ de alquiler");
+                            this.plusMoney(Variables.game_cards.get(i).getPriceRent());
+                            Board.money_label.setText(String.valueOf(this.getMoney() + " $"));
 
                             break;
                         }
@@ -443,9 +442,6 @@ public class ConfigPort implements Runnable{
                         if( data.substring(19,24).equals(Variables.game_cards.get(i).getSerial()) ){
                             for (int j = 0; j < Variables.game_stations.size(); j++) {
                                 if(data.substring(8, 10).equals(Variables.game_stations.get(j).getSerial())){
-                                    
-                                    Board.history_plays.setText("");
-                                    Board.history_plays.append("La " + Variables.game_stations.get(j).getName() + " pagó " + Variables.game_cards.get(i).getPriceRent() + "$ de alquiler");
                                     
                                     Variables.info_to_send = Variables.stop_bit +
                                         data.substring(8, 10) + 
@@ -458,7 +454,10 @@ public class ConfigPort implements Runnable{
                                         this.sendData(Variables.info_to_send);
                                         Variables.info_to_send = "";
                                         Variables.info_received = "";
-
+                                        
+                                        Board.history_plays.setText("");
+                                        Board.history_plays.append("La " + Variables.game_stations.get(j).getName() + " pagó " + Variables.game_cards.get(i).getPriceRent() + "$ de alquiler");
+                                        
                                     break;
                                 }
                             }
@@ -530,6 +529,34 @@ public class ConfigPort implements Runnable{
                     }
                 } 
             }       
+        }
+        else if(data.substring(12, 16).equals("0101")){ // Trama para "Casillas especiales"
+            if(data.substring(8,10).equals(this.getPlayerId())){
+                Board.history_plays.setText("");
+                Board.history_plays.append("Se completo el anillo para las casillas especiales \n");
+                
+                Variables.info_received = "";
+                Variables.info_to_send = "";
+            }
+            else {
+                for (int i = 0; i < Variables.game_stations.size(); i++) {
+                    if(data.substring(8, 10).equals(Variables.game_stations.get(i).getSerial())){
+                        Board.history_plays.setText("");
+                        Board.history_plays.append("La " + Variables.game_stations.get(i).getName() + " cayó en una casilla especial \n");
+                    
+                        Variables.info_to_send = Variables.stop_bit +
+                            data.substring(8, 10) +
+                            data.substring(8, 10) +
+                            "0101" +
+                            "00000000" +
+                            Variables.stop_bit;
+                        
+                        this.sendData(Variables.info_to_send);
+                        Variables.info_to_send = "";
+                        Variables.info_received = "";
+                    }
+                }
+            }
         }
     } 
     @Override

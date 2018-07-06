@@ -415,8 +415,23 @@ public class Board extends javax.swing.JFrame {
           port.getPosition() == 17 || port.getPosition() == 20 || port.getPosition() == 22 || port.getPosition() == 30 ||
           port.getPosition() == 33 || port.getPosition() == 36)
         {
+            Board.history_plays.setText("");
+            Board.history_plays.append("Caiste en una casilla especial \n");
+            buyCardButton.setEnabled(false);
+            
             record.setBounds(Variables.coordinates.get(port.getPosition()).getCoordinateX(),Variables.coordinates.get(port.getPosition()).getCoordinateY(),80,60);
             Variables.info_to_send = ""; // Reseteo la variable de la trama completa de lanzamiento de dados
+            
+            Variables.info_to_send = Variables.stop_bit +
+                    port.getPlayerId() +
+                    port.getPlayerId() +
+                    "0101" +
+                    "00000000"+
+                    Variables.stop_bit;
+            
+            port.sendData(Variables.info_to_send);
+            Variables.info_to_send = "";
+            Variables.info_received = "";
         }
         else if(port.getPosition() == 4 || port.getPosition() == 38){
             port.downMoney(75);
@@ -447,6 +462,9 @@ public class Board extends javax.swing.JFrame {
                     }
                     else if(property.getOwner().equals(port.getPlayerId())){
                         buyCardButton.setEnabled(false);
+                        Board.history_plays.setText("");
+                        Board.history_plays.append("Tu eres dueño de la propiedad \n");
+                        
                         Variables.info_to_send = Variables.stop_bit +
                             port.getPlayerId() +
                             port.getPlayerId() +
@@ -459,22 +477,25 @@ public class Board extends javax.swing.JFrame {
                             Variables.info_to_send = "";
                             Variables.info_received = "";
                             
-                        Board.history_plays.setText("");
-                        Board.history_plays.append("Tu eres dueño de la propiedad \n");
                     }
                     else {
-                        Board.history_plays.setText("");
-                        Board.history_plays.append("Tuviste que pagar " + property.getPriceRent() + "$ de renta"); 
+                        System.out.println("Property ");
+                        buyCardButton.setEnabled(false);
+                        history_plays.setText("");
+                        history_plays.append("Tuviste que pagar " + property.getPriceRent() + "$ de renta"); 
+                        
                         port.downMoney(property.getPriceRent());
+                        money_label.setText(String.valueOf(port.getMoney() + " $"));
                         
                         Variables.info_to_send = Variables.stop_bit +
                             port.getPlayerId() +
                             property.getOwner() +
-                            Variables.game_instructions.get(4) +
+                            Variables.game_instructions.get(4).getSerial() +
                             "010" +
                             property.getSerial() + 
                             Variables.stop_bit;
-                        
+                            System.out.println("Trama :::: " + Variables.info_to_send);
+                            
                             port.sendData(Variables.info_to_send);
                             Variables.info_to_send = "";
                             Variables.info_received = "";
